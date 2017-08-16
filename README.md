@@ -7,7 +7,7 @@ Maintenance:
     
   EDITING ART PAGES:
   This is a block of code:
-    <div class="responsive"> # refers to the responsive class - allows the image to be clicked
+    <p><div class="responsive"> # refers to the responsive class - allows the image to be clicked
        <div class="gallery"> # refers to the gallery class - this makes the photo appear in a "gallery" box instead of just on the page 
           <a target="_blank" href="example.jpg"> # when the image is clicked, it opens the image on another page
             <img src="example.jpg" alt="333" width="600" height="400"> # sources the image, gives an alt name, and defines width/height(px)
@@ -42,7 +42,7 @@ The structure of an artist button should then look like this:
            </div>
             
 <div class="clearfix"></div> # clearfix only goes at the very end of your block, right above </div>
-</div>
+</div></p>
 # Don't forget ABC order on the artist pages!
 
   MAIN PAGE:
