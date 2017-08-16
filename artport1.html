@@ -1,0 +1,677 @@
+﻿<!DOCTYPE html>
+<html>
+<title>Candles & Soap</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<head>
+<!-- for the side nav on mobile -->
+<style>
+body {
+    font-family: "Lato", sans-serif;
+}
+
+.sidenav {
+    height: 100%;
+    width: 0;
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    background-color: #111;
+    overflow-x: hidden;
+    transition: 0.5s;
+    padding-top: 60px;
+    text-align:center;
+}
+
+.sidenav a {
+    padding: 8px 8px 8px 32px;
+    text-decoration: none;
+    font-size: 25px;
+    color: #818181;
+    display: block;
+    transition: 0.3s;
+
+}
+
+.sidenav a:hover{
+    color: #f1f1f1;
+}
+
+.sidenav .closebtn {
+    position: absolute;
+    top: 0;
+    right: 25px;
+    font-size: 36px;
+    margin-left: 50px;
+}
+
+@media screen and (max-height: 450px) {
+  .sidenav {padding-top: 15px;}
+  .sidenav a {font-size: 18px;}
+}
+
+</style>
+<!-- font -->
+<style>
+body {font-family: "Lato", sans-serif}
+</style>
+<!-- for the artist buttons -->
+<style>
+button.accordion {
+    background-color: #000000;
+    color: #ffffff;
+    cursor: pointer;
+    padding: 18px;
+    width: 100%;
+    border: none;
+    text-align: left;
+    outline: none;
+    font-size: 15px;
+    transition: 0.4s;
+}
+
+button.accordion.active, button.accordion:hover {
+    background-color: #ddd;
+}
+
+button.accordion:after {
+    content: '\002B';
+    color: #777;
+    font-weight: bold;
+    float: right;
+    margin-left: 5px;
+}
+
+button.accordion.active:after {
+    content: "\2212";
+}
+
+div.panel {
+    padding: 0 18px;
+    background-color: white;
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.2s ease-out;
+}
+
+/* for the image galleries */
+
+div.gallery {
+    border: 1px solid #ccc;
+}
+
+div.gallery:hover {
+    border: 1px solid #777;
+}
+
+div.gallery img {
+    width: 100%;
+    height: auto;
+}
+
+div.desc {
+    padding: 15px;
+    text-align: center;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+.responsive {
+    padding: 0 6px;
+    float: left;
+    width: 24.99999%;
+}
+
+@media only screen and (max-width: 700px){
+    .responsive {
+        width: 49.99999%;
+        margin: 6px 0;
+    }
+}
+
+@media only screen and (max-width: 500px){
+    .responsive {
+        width: 100%;
+    }
+}
+
+.clearfix:after {
+    content: "";
+    display: table;
+    clear: both;
+}
+
+</style>
+</head>
+<body>
+
+<!-- Navbar -->
+<!-- Make buttons work -->
+<!-- Allow for space to see the header linked to -->
+<!-- Add a search bar at some point -->
+<div id="nav" class="w3-top">
+  <div class="w3-bar w3-black w3-card-2">
+    <a class="w3-bar-item w3-button w3-padding-large w3-hide-medium w3-hide-large w3-right" href="javascript:void(0)" onclick="myFunction()" title="Toggle Navigation Menu"><i class="fa fa-bars"></i></a>
+    <a href="#" class="w3-bar-item w3-button w3-padding-large">HOME</a>
+    <div class="w3-dropdown-hover w3-hide-small">
+      <button class="w3-padding-large w3-button" title="More">ARTISTS <i class="fa fa-caret-down"></i></button>
+      <!-- Artist drop-down will be sorted by media -->
+      <!-- Add stuff here later -->
+      <div class="w3-dropdown-content w3-bar-block w3-card-4">
+        <a href="#" class="w3-bar-item w3-button">Clothing/Textiles/Accessories</a>
+        <a href="#" class="w3-bar-item w3-button">Candles/Soap</a>
+        <a href="#" class="w3-bar-item w3-button">Costumes/Masks</a>
+        <a href="#" class="w3-bar-item w3-button">Home/Health and Beauty</a>
+        <a href="#" class="w3-bar-item w3-button">Jewelry</a>
+        <a href="#" class="w3-bar-item w3-button">Mixed Media/Art Objects</a>
+        <a href="#" class="w3-bar-item w3-button">Paintings/Prints/Drawings</a>
+        <a href="#" class="w3-bar-item w3-button">Photography</a>
+        <a href="#" class="w3-bar-item w3-button">Pottery</a>
+        <a href="#" class="w3-bar-item w3-button">Other Art...</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Navbar on small screens -->
+<div id="navDemo" class="w3-bar-block w3-black w3-hide w3-hide-large w3-hide-medium w3-top" style="margin-top:46px">
+  <!-- Make artists a side menu -->
+  <div id="mySidenav" class="sidenav">
+  <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+  <a href="#" class="w3-bar-item w3-button">Candles/Soap</a>
+        <a href="#" class="w3-bar-item w3-button">Costumes/Masks</a>
+        <a href="#" class="w3-bar-item w3-button">Home/Health and Beauty</a>
+        <a href="#" class="w3-bar-item w3-button">Jewelry</a>
+        <a href="#" class="w3-bar-item w3-button">Mixed Media/Art Objects</a>
+        <a href="#" class="w3-bar-item w3-button">Paintings/Prints/Drawings</a>
+        <a href="#" class="w3-bar-item w3-button">Photography</a>
+        <a href="#" class="w3-bar-item w3-button">Pottery</a>
+        <a href="#" class="w3-bar-item w3-button">Other Art...</a>
+</div>
+<span style="font-size:16px;cursor:pointer" onclick="openNav()">&#9776; ARTISTS</span>
+</div>
+
+<div class="w3-content" style="max-width:2000px;margin-top:50px">
+<!-- Everything for div class responsive is for the images. -->
+<h2>Candles & Soap</h2>
+<p>Find out more about some of our artists below. Use the search bar if needed, or go back to the artist menu above to view works in another medium.</p>
+<button class="accordion">Bubble Butt Bath Co.</button>
+<div class="panel">
+  <p>Bubble Butt Bath Co. creates bath products that make bath time feel like fun time. Providing products that can be customized for special events, our lineup includes products such as soap (including soaps that wiggle and jiggle), bath fizzies, bath melts, solid bubble bath bars, beard oil, solid perfume, scrubs, and more!<br><br>Find Bubble Butt Bath Co. on <a href="https://www.etsy.com/shop/BubbleButtBathCo">Etsy</a>, <a href="https://www.facebook.com/BubbleButtBathCo">Facebook</a>, and <a href="https://instagram.com/bubblebuttbathco">Instagram</a>.</p>
+  <div class="responsive">
+  <div class="gallery">
+    <a target="_blank" href="Sugar-Baby-Cupcake-Soaps.jpg">
+      <img src="Sugar-Baby-Cupcake-Soaps.jpg" alt="Cupcake Soaps" width="300" height="200">
+    </a>
+    <div class="desc"></div>
+  </div>
+</div>
+
+<div class="responsive">
+  <div class="gallery">
+    <a target="_blank" href="Sugar-Mama-Cupcake-Bath-Fizzies.jpg">
+      <img src="Sugar-Mama-Cupcake-Bath-Fizzies.jpg" alt="Fizzies" width="600" height="400">
+    </a>
+    <div class="desc"></div>
+  </div>
+</div>
+
+<div class="responsive">
+  <div class="gallery">
+    <a target="_blank" href="Under-the-Sea-Soap.jpg">
+      <img src="Under-the-Sea-Soap.jpg" alt="Under Sea" width="600" height="400">
+    </a>
+  </div>
+</div>
+
+<div class="responsive">
+  <div class="gallery">
+    <a target="_blank" href="Yeti-Solid-Bubble-Bath-Bar.jpg">
+      <img src="Yeti-Solid-Bubble-Bath-Bar.jpg" alt="Yeti" width="600" height="400">
+    </a>
+    <div class="desc"></div>
+  </div>
+</div>
+
+<div class="clearfix"></div>
+</div>
+
+<button class="accordion">Cake Face Soaping</button>
+<div class="panel">
+  <p>Cake Face Soaping makes little work of vegan art for your skin by using plants from their
+garden and high quality essential oils. Every item is curated, so the entire line is
+like walking through an art garden. Little details and beautiful skin
+are the driving force behind what makes people fall in love with Cake Face
+Soaping. We offer soaps, lotions, facial care, products for sensitive and baby skin, aromatherapy oils, scrubs, and more!<br><br>Find Cake Face Soaping on their <a href="http://cakefacesoaping.com/">website</a>, <a href="https://www.etsy.com/shop/CakeFaceSoaping?ref=hdr_shop_menu">Etsy</a>,<a href="https://www.facebook.com/Cake-Face-Soaping-138767689493354/">Facebook</a>, <a href="https://twitter.com/Kelsey_cakeface">Twitter</a>, <a href="https://instagram.com/kelsey_cakeface/">Instagram</a>, and <a href="https://www.pinterest.com/cakefacesoaping/">Pinterest</a>.</p>
+<div class="responsive">
+  <div class="gallery">
+    <a target="_blank" href="DSC_0050.jpg">
+      <img src="DSC_0050.jpg" alt="pillow" width="600" height="400">
+    </a>
+    <div class="desc"></div>
+  </div>
+</div>
+
+<div class="responsive">
+  <div class="gallery">
+    <a target="_blank" href="DSC_0020.jpg">
+      <img src="DSC_0020.jpg" alt="botella" width="600" height="400">
+    </a>
+    <div class="desc"></div>
+  </div>
+</div>
+
+<div class="responsive">
+  <div class="gallery">
+    <a target="_blank" href="headace-roll.jpg">
+      <img src="headache-roll.jpg" alt="roll" width="600" height="400">
+    </a>
+    <div class="desc"></div>
+  </div>
+</div>
+
+<div class="responsive">
+  <div class="gallery">
+    <a target="_blank" href="bby-lot-all.jpg">
+      <img src="bby-lot-all.jpg" alt="bby" width="600" height="400">
+    </a>
+    <div class="desc"></div>
+  </div>
+</div>
+
+<div class="responsive">
+  <div class="gallery">
+    <a target="_blank" href="333.jpg">
+      <img src="333.jpg" alt="333" width="600" height="400">
+    </a>
+    <div class="desc"></div>
+  </div>
+</div>
+<div class="clearfix"></div>
+</div>
+
+<button class="accordion">Chrystal Lea Nause</button>
+<div class="panel">
+  <p>Chrystal Lea Nause is a fine art photographer specializing in traditional darkroom processes. She earned her Bachelor of Arts (photography, 2005) and Master of Arts (physical anthropology, 2010) from Southern Illinois University Carbondale. Her primary interests are travel photography, narrative tableau, and classic portraiture. Her work has been exhibited internationally.<br><br> 
+
+In addition to photography, she also operate two other businesses: Nuttier Than A Squirrel and BOMB BOMBS. The work featured below is courtesy of BOMB BOMBS.<br><br>You can find Chrystal Lea Nause on her <a href="http://www.chrystalnause.com/">website</a>, <a href="http://www.nuttierthanasquirrel.etsy.com/">Etsy</a>, <a href="http://www.facebook.com/ChrystalNausePhotography">Facebook</a>, <a href="http://www.instagram.com/nuttierthanasquirrel/">Instagram</a>, and <a href="http://www.pinterest.com/chrystalnause/">Pinterest</a>.</p>
+
+<div class="responsive">
+  <div class="gallery">
+    <a target="_blank" href="bombbomb_02.jpg">
+      <img src="bombbomb_02.jpg" alt="333" width="600" height="400">
+    </a>
+    <div class="desc"></div>
+  </div>
+</div>
+<div class="clearfix"></div>
+</div>
+
+<button class="accordion">Essentially NOLA</button>
+<div class="panel">
+  <p>Essentially Nola creates artisan bath, body & skin care products boosted with the healing powers of essential oils.<br><br>Their products are made in small batches to ensure quality, with 100% organic bases. The ingredients sourced are 100% food grade and do not contain gluten, parabens, or GMOs. <br><br>Please note that raw coconut oil is used in most products. <br><br>You can also find Essentially NOLA on their <a href="http://www.essentiallynola.com/">website</a>, <a href="http://facebook.com/essentiallynola">Facebook</a>, and on <a href="http://www.instagram.com/essentially_nola">Instagram</a>.</p>
+<div class="responsive">
+  <div class="gallery">
+    <a target="_blank" href="nola1.jpg">
+      <img src="nola1.jpg" alt="1" width="600" height="400">
+    </a>
+    <div class="desc"></div>
+  </div>
+</div>
+
+<div class="responsive">
+  <div class="gallery">
+    <a target="_blank" href="nola2.jpg">
+      <img src="nola2.jpg" alt="2" width="600" height="400">
+    </a>
+    <div class="desc"></div>
+  </div>
+</div>
+
+<div class="responsive">
+  <div class="gallery">
+    <a target="_blank" href="nola3.jpg">
+      <img src="nola3.jpg" alt="3" width="600" height="400">
+    </a>
+    <div class="desc"></div>
+  </div>
+</div>
+
+<div class="responsive">
+  <div class="gallery">
+    <a target="_blank" href="nola4.jpg">
+      <img src="nola4.jpg" alt="4" width="600" height="400">
+    </a>
+    <div class="desc"></div>
+  </div>
+</div>
+
+<div class="responsive">
+  <div class="gallery">
+    <a target="_blank" href="nola5.jpg">
+      <img src="nola5.jpg" alt="5" width="600" height="400">
+    </a>
+    <div class="desc"></div>
+  </div>
+</div>
+  
+<div class="clearfix"></div>  
+</div>
+
+<button class="accordion">Goods that Matter</button>
+<div class="panel">
+  <p>Goods that Matter is committed to creating eco-friendly products in the U.S. that give back to the world’s most pressing social and environmental needs. To date, the company has donated $28,210 to wetland restoration, oil spill cleanup, disaster relief, education, and literacy groups.<br><br>Their launch product, BirdProject Soap, originally raised funds for cleanup and restoration after the 2010 BP Oil Spill. Each black bird-shaped soap contains a white ceramic bird, handmade from Louisiana Clay, which remains as a keepsake once the outer soap has washed away. The soap is shaped to be cradled in your hand and is a powerful representation of all creatures affected by the BP Deepwater Horizon Oil Spill.<br><br>Find Goods that Matter on their <a href="http://shop.ourgoodsmatter.com/">website</a>, <a href="https://www.facebook.com/goodsthatmatter">Facebook</a>, <a href="https://twitter.com/goodsthatmatter">Twitter</a>, <a href="https://instagram.com/goodsthatmatter/">Instagram</a>, and <a href="https://www.pinterest.com/goodsthatmatter/">Pinterest</a>.
+</p>
+
+<div class="responsive">
+  <div class="gallery">
+    <a target="_blank" href="bird-soap-with-ceramic-keepsake-for-gulf-restoration-and-animal-rescue-square.jpg">
+      <img src="bird-soap-with-ceramic-keepsake-for-gulf-restoration-and-animal-rescue-square.jpg" alt="5" width="600" height="400">
+    </a>
+    <div class="desc"></div>
+  </div>
+</div>
+<div class="clearfix"></div>
+</div>
+
+<button class="accordion">Kettle Moraine Soap Company</button>
+<div class="panel">
+  <p>Handcrafting fine French-style soaps and bath products for over two decades.</p>
+<div class="clearfix"></div>
+</div>
+
+<button class="accordion">Mad Darling</button>
+<div class="panel">
+  <p>Mad Darling makes their candles in small batches, by hand, in New Orleans. The artist uses 100% soy wax from crops harvested in the United States. Custom-blended oils are added to the wax before being poured into reusable vessels. All of the fragrance oils are phthalate-free.<br><br>You can find Mad Darling on <a href="https://www.etsy.com/shop/maddarling">Etsy</a>, <a href="https://www.facebook.com/lamaddarling?_rdr=p">Facebook</a>, and <a href="https://instagram.com/maddarling/">Instagram</a>.</p>
+  
+<div class="responsive">
+  <div class="gallery">
+    <a target="_blank" href="Product-Photo-JOF.jpg">
+      <img src="Product-Photo-JOF.jpg"  width="600" height="400">
+    </a>
+    <div class="desc"></div>
+  </div>
+</div>
+
+<div class="responsive">
+  <div class="gallery">
+    <a target="_blank" href="Product-Photo-SCG.jpg">
+      <img src="Product-Photo-SCG.jpg" alt="5" width="600" height="400">
+    </a>
+    <div class="desc"></div>
+  </div>
+</div>
+
+<div class="responsive">
+  <div class="gallery">
+    <a target="_blank" href="Product-Photo-FQP.jpg">
+      <img src="Product-Photo-FQP.jpg" alt="5" width="600" height="400">
+    </a>
+    <div class="desc"></div>
+  </div>
+</div>
+
+<div class="responsive">
+  <div class="gallery">
+    <a target="_blank" href="il_570xN.784267140_cytx.jpg">
+      <img src="il_570xN.784267140_cytx.jpg" alt="5" width="600" height="400">
+    </a>
+    <div class="desc"></div>
+  </div>
+</div> 
+
+<div class="responsive">
+  <div class="gallery">
+    <a target="_blank" href="il_570xN.784262484_l3a8.jpg">
+      <img src="il_570xN.784262484_l3a8.jpg" alt="5" width="600" height="400">
+    </a>
+    <div class="desc"></div>
+  </div>
+</div> 
+<div class="clearfix"></div>  
+</div>
+
+<button class="accordion">Phillip on St. Philip</button>
+<div class="panel">
+  <p>Phillip on St. Philip is a candlemaker, incense crafter, and creator of perfume. The perfume is crafted from unique and original blends, as are the hand-dipped custom scents for the incense. His candles are made with essential oils and perfume oils. <br><br> Phillip on St. Philip can also be found on their <a href="http://www.philliponstphilip.com/">website</a>.</p>
+  
+<div class="responsive">
+  <div class="gallery">
+    <a target="_blank" href="image12.jpeg">
+      <img src="image12.jpeg" alt="5" width="600" height="400">
+    </a>
+    <div class="desc"></div>
+  </div>
+</div>
+
+<div class="responsive">
+  <div class="gallery">
+    <a target="_blank" href="image13.jpeg">
+      <img src="image13.jpeg" alt="5" width="600" height="400">
+    </a>
+    <div class="desc"></div>
+  </div>
+</div>
+
+<div class="responsive">
+  <div class="gallery">
+    <a target="_blank" href="image15.jpeg">
+      <img src="image15.jpeg" alt="5" width="600" height="400">
+    </a>
+    <div class="desc"></div>
+  </div>
+</div>
+
+<div class="responsive">
+  <div class="gallery">
+    <a target="_blank" href="image16.jpeg">
+      <img src="image16.jpeg" alt="5" width="600" height="400">
+    </a>
+    <div class="desc"></div>
+  </div>
+</div>
+<div class="clearfix"></div>
+</div>
+
+<button class="accordion">Shae Shea</button>
+<div class="panel">
+  <p>Shae Shea LLC is a small business based out of New Orleans, LA. The owner has been making her own bath and body products since 2013. After noticing that her eczema and allergies were greatly reduced, Shae Shea was founded to make soaps, candles, lip balms, and other products for people with sensitive skin. Each product is handmade. Products are also offered for people with allergies and special requests.<br><br>Shae Shea can be found at their <a href="http://www.shaeshea.com/">website</a>, <a href="https://www.etsy.com/shop/ShaeT?ref=hdr_shop_menu">Etsy</a>, <a href="http://www.facebook.com/shaesheaonline">Facebook</a>, <a href="https://twitter.com/shaesheaonline">Twitter</a>, and <a href="https://instagram.com/shaesheaonline/">Instagram</a>.</p>
+  
+<div class="responsive">
+  <div class="gallery">
+    <a target="_blank" href="booth-pic.jpg">
+      <img src="booth-pic.jpg" alt="5" width="600" height="400">
+    </a>
+    <div class="desc"></div>
+  </div>
+</div>
+
+<div class="responsive">
+  <div class="gallery">
+    <a target="_blank" href="IMG_4103.jpg">
+      <img src="IMG_4103.jpg" alt="5" width="600" height="400">
+    </a>
+    <div class="desc"></div>
+  </div>
+</div>
+
+<div class="responsive">
+  <div class="gallery">
+    <a target="_blank" href="soaps.jpg">
+      <img src="soaps.jpg" alt="5" width="600" height="400">
+    </a>
+    <div class="desc"></div>
+  </div>
+</div>
+
+<div class="responsive">
+  <div class="gallery">
+    <a target="_blank" href="shea_butter_2.jpg">
+      <img src="shea_butter_2.jpg" alt="5" width="600" height="400">
+    </a>
+    <div class="desc"></div>
+  </div>
+</div>
+
+<div class="responsive">
+  <div class="gallery">
+    <a target="_blank" href="candles_australian_bamboo.jpg">
+      <img src="candles_australian_bamboo.jpg" alt="5" width="600" height="400">
+    </a>
+    <div class="desc"></div>
+  </div>
+</div>
+<div class="clearfix"></div>
+</div>
+
+<button class="accordion">Soapmaster General</button>
+<div class="panel">
+  <p>William Terry is an herbalist, inventor, and master soapmaker of 8 years. He specializes in plant-based bar soap made from scratch and has many uniquely colored and scented varieties.<br><br>Find Soapmaster General on <a href="https://www.facebook.com/Bayousoap.com">Facebook</a>.</p>
+  
+<div class="responsive">
+  <div class="gallery">
+    <a target="_blank" href="soapmas1.jpg">
+      <img src="soapmas1.jpg" alt="5" width="600" height="400">
+    </a>
+    <div class="desc"></div>
+  </div>
+</div>  
+
+<div class="responsive">
+  <div class="gallery">
+    <a target="_blank" href="soapmas2.jpg">
+      <img src="soapmas2.jpg" alt="5" width="600" height="400">
+    </a>
+    <div class="desc"></div>
+  </div>
+</div>  
+
+<div class="responsive">
+  <div class="gallery">
+    <a target="_blank" href="soapmas3.jpg">
+      <img src="soapmas3.jpg" alt="5" width="600" height="400">
+    </a>
+    <div class="desc"></div>
+  </div>
+</div>  
+
+<div class="responsive">
+  <div class="gallery">
+    <a target="_blank" href="soapmas4.jpg">
+      <img src="soapmas4.jpg" alt="5" width="600" height="400">
+    </a>
+    <div class="desc"></div>
+  </div>
+</div>  
+
+<div class="responsive">
+  <div class="gallery">
+    <a target="_blank" href="soapmas5.jpg">
+      <img src="soapmas5.jpg" alt="5" width="600" height="400">
+    </a>
+    <div class="desc"></div>
+  </div>
+</div>  
+<div class="clearfix"></div>  
+</div>
+
+<button class="accordion">Swamp Trash</button>
+<div class="panel">
+  <p>Swamp Trash is a sketch-based merchandise brand drawn by Lauren Huff. Her designs are printed on candles, patches, postcards, t-shirts, tote bags, and more!<br><br>Find Swamp Trash on their <a href="http://www.swamptrashnola.com/">website</a>, <a href="http://www.facebook.com/swamptrashnola">Facebook</a>, and <a href="http://www.instagram.com/swamptrashnola">Instagram</a>.</p>
+  
+<div class="responsive">
+  <div class="gallery">
+    <a target="_blank" href="image.jpeg">
+      <img src="image.jpeg" alt="5" width="600" height="400">
+    </a>
+    <div class="desc"></div>
+  </div>
+</div>
+
+<div class="responsive">
+  <div class="gallery">
+    <a target="_blank" href="image3.jpeg">
+      <img src="image3.jpeg" alt="5" width="600" height="400">
+    </a>
+    <div class="desc"></div>
+  </div>
+</div> 
+<div class="clearfix"></div>
+</div>
+<!-- script to animate the drop-down artist buttons -->
+<script>
+var acc = document.getElementsByClassName("accordion");
+var i;
+
+for (i = 0; i < acc.length; i++) {
+  acc[i].onclick = function() {
+    this.classList.toggle("active");
+    var panel = this.nextElementSibling;
+    if (panel.style.maxHeight){
+      panel.style.maxHeight = null;
+    } else {
+      panel.style.maxHeight = panel.scrollHeight + "px";
+    } 
+  }
+}
+</script>
+
+<!-- This is for a smooth scroll -->
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.4/jquery.min.js" type="text/javascript"></script> 
+<script src="jquery.localscroll.js" type="text/javascript"></script> 
+<script src="jquery.scrollTo.js" type="text/javascript"></script> 
+
+<script>
+
+// Used to toggle the menu on small screens when clicking on the menu button
+function myFunction() {
+    var x = document.getElementById("navDemo");
+    if (x.className.indexOf("w3-show") == -1) {
+        x.className += " w3-show";
+    } else { 
+        x.className = x.className.replace(" w3-show", "");
+    }
+}
+
+// When the user clicks anywhere outside of the modal, close it
+var modal = document.getElementById('ticketModal');
+window.onclick = function(event) {
+  if (event.target == modal) {
+    modal.style.display = "none";
+  }
+}
+</script>
+
+<!-- for scrolling -->
+<script type="text/javascript">
+$(document).ready(function() {
+   $('#nav').localScroll({duration:900});
+});
+</script>
+
+<script type="text/javascript">
+$(document).ready(function() {
+   $('#navDemo').localScroll({duration:900});
+});
+</script>
+
+<!-- for the side nav for phone -->
+<script>
+function openNav() {
+    document.getElementById("mySidenav").style.width = "100%";
+}
+
+function closeNav() {
+    document.getElementById("mySidenav").style.width = "0";
+}
+</script>
+
+
+</body>
+</html>
