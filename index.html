@@ -72,6 +72,12 @@ textarea {
 }
 
 </style>
+<!-- to fix the underline problem with the social media buttons -->
+<style>
+a.one:link {text-decoration:none;}
+a.one:visited {text-decoration:none;}
+a.one:hover {text-decoration:none;}
+</style>
 
 <style>
 body {font-family: "Lato", sans-serif}
@@ -247,15 +253,15 @@ function myMap() {
 <!-- Footer -->
 <!-- Make these link up to respective sites -->
 <footer class="w3-container w3-padding-64 w3-center w3-opacity w3-light-grey w3-xlarge">
-  <a href="https://www.facebook.com/frenchmenartmarket/posts/1007446452626634" class="fa fa-facebook-official w3-hover-opacity"></a>
-  <a href="https://twitter.com/intent/tweet?text=Home%20http%3A%2F%2Ffrenchmenartmarket.com%2F&related=AddToAny,micropat" class="fa fa-twitter w3-hover-opacity"></a>
-  <a href="https://www.instagram.com/frenchmen_art_market/" class="fa fa-instagram w3-hover-opacity"></a>
-  <a href="https://www.pinterest.com/" class="fa fa-pinterest-p w3-hover-opacity"></a>
-  <a href="https://www.reddit.com/submit/" class="fa fa-reddit w3-hover-opacity"></a>
-  <a href="https://snapchat.com/" class="fa fa-snapchat w3-hover-opacity"></a>
-  <a href="https://www.tumblr.com/" class="fa fa-tumblr w3-hover-opacity"></a>
+  <a href="https://www.facebook.com/frenchmenartmarket/posts/1007446452626634" class="fa fa-facebook-official w3-hover-opacity one"></a>
+  <a href="https://twitter.com/intent/tweet?text=Home%20http%3A%2F%2Ffrenchmenartmarket.com%2F&related=AddToAny,micropat" class="fa fa-twitter w3-hover-opacity one"></a>
+  <a href="https://www.instagram.com/frenchmen_art_market/" class="fa fa-instagram w3-hover-opacity one"></a>
+  <a href="https://www.pinterest.com/" class="fa fa-pinterest-p w3-hover-opacity one"></a>
+  <a href="https://www.reddit.com/submit/" class="fa fa-reddit w3-hover-opacity one"></a>
+  <a href="https://snapchat.com/" class="fa fa-snapchat w3-hover-opacity one"></a>
+  <a href="https://www.tumblr.com/" class="fa fa-tumblr w3-hover-opacity one"></a>
   
-  <p class="w3-medium">Hosted by GitHub Pages</p>
+  <p class="w3-medium">Hosted by <a href="https://pages.github.com/" target="_blank">GitHub Pages</a></p>
   <p class="w3-medium">Powered by <a href="https://www.w3schools.com/w3css/default.asp" target="_blank">w3.css</a></p>
   <p class="w3-medium">Built by Samantha Santiago</p>
 </footer>
@@ -274,7 +280,7 @@ function carousel() {
     myIndex++;
     if (myIndex > x.length) {myIndex = 1}    
     x[myIndex-1].style.display = "block";  
-    setTimeout(carousel, 4000);    
+    setTimeout(carousel, 6000);    
 }
 
 // Used to toggle the menu on small screens when clicking on the menu button
